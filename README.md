@@ -1,7 +1,5 @@
 # FabricNetwork-2.x
 
-Youtube Channel: https://www.youtube.com/watch?v=SJTdJt6N6Ow&list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6
-
 
 Network Topology
 
@@ -37,3 +35,87 @@ Steps:
 9) Register User using API
 10) Invoke Chaincode Transaction
 11) Query Chaincode Transaction
+
+
+cd FabricNetwork-2.x/
+
+cd artifacts/channel/create-certificate-with-ca
+docker-compose up -d
+docker ps
+./create-certificate-with-ca.sh
+
+
+cd ..
+./create-artifacts.sh
+
+cd ..
+docker-compose up -d
+docker ps
+
+cd ..
+./createChannel.sh
+
+./deployTransactionCC.sh
+postman
+UI启动
+
+
+换fabcar演示
+
+cd artifacts/src/github.com/fabcar/go/
+go mod tidy
+cd ../../../../..
+
+./depolyChaincode.sh
+(Show agreement from those orgs)
+
+cd api-2.0/
+npm install
+
+cd config/
+./generate-ccp.sh
+
+cd ..
+nodemon app.js 
+
+(如果遇到4000端口占用：
+sudo lsof -i :4000
+
+sudo kill <PID>
+)
+
+成功启用，回到本机，关联端口
+ssh -L 4000:127.0.0.1:4000  
+
+打开postman
+reg user, get returned token
+Paste token to add car
+
+去couchdb查看新添加的，回到本机terminal，关联端口
+ssh -L 5984:127.0.0.1:5984 
+couchdb UI: http://localhost:5984/_utils/#login
+Username: admin
+Password: adminpw
+
+Back to postman, add car, keep same car_id, modify others
+Go to couchDB, find that record. rev, which represents version change to 2.
+
+Back to postman, find getCarByID. Paste user token. Then call it.
+
+Deploy new Chaincode:
+Back to server, open new terminal in FabricNetwork-2.x
+./deployDocumentCC.sh 
+
+After deploy, show 3 more containers about documentCC
+docker ps
+
+Deploy explorer:
+First, copy crypto-config folder to Explorer:
+cp -r artifacts/channel/crypto-config Explorer/
+
+/home/tingyu/myFabric/FabricNetwork-2.x/Explorer/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore
+Rename it to 'priv_sk'
+
+cd Explorer/
+docker-compose up -d
+ 
