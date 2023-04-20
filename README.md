@@ -1,4 +1,6 @@
-# FabricNetwork-2.x
+  Backend: https://github.com/WANG-Tingyu/ShareNetwork-Fabric.git
+  Frontend: https://github.com/WANG-Tingyu/txfabric-app.git
+  Demo: https://youtu.be/K3EcpkUQH8I
 
 
 Network Topology
