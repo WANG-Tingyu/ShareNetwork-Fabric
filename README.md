@@ -2,7 +2,8 @@
 - Backend: https://github.com/WANG-Tingyu/ShareNetwork-Fabric.git
 - Frontend: https://github.com/WANG-Tingyu/txfabric-app.git
 - Demo: https://youtu.be/K3EcpkUQH8I
-
+:star2: **Found this repository helpful?** Light it up with a star and make my day! :wink:
+---
 This is a platform based on Hyperledger Fabric connecting multiple parties (in a distributed network). Each party owns data assets in 3 categories: i) public, ii) shared and iii) private. There is a need to exchange shared data assets between certain parties via secured channels on the platform. These information is highly sensitive and shall not sit in a centralized 3rd party server. Any modification of the shared information shall be shared within the same channel and audit trailed. Data security is the key and unauthorized alternation to the shared data asset shall be prohibited and any intend action should be traceable.
 
 ![F0](images/f0.png)
@@ -281,59 +282,9 @@ In conclusion, the proposed data sharing platform successfully utilized Hyperled
 - Azaria, A., Ekblaw, A., Vieira, T., & Lippman, A. (2016, August). Medrec: Using blockchain for medical data access and permission management. In 2016 2nd international conference on open and big data (OBD) (pp. 25-30). IEEE.
 - Raikwar, M., Mazumdar, S., Ruj, S., Gupta, S. S., Chattopadhyay, A., & Lam, K. Y. (2018, February). A blockchain framework for insurance processes. In 2018 9th IFIP International Conference on New Technologies, Mobility and Security (NTMS) (pp. 1-4). IEEE.
 
+---
+:star2: **Found this repository helpful?** Light it up with a star and make my day! :wink:
 
 
 
-
-
-Steps:
-
-1) Clone the repo
-2) Run Certificates Authority Services for all Orgs
-3) Create Cryptomaterials for all organizations
-4) Create Channel Artifacts using Org MSP
-5) Create Channel and join peers
-6) Deploy Chaincode
-    1) Install All dependency
-    2) Package Chaincode
-    3) Install Chaincode on all Endorsing Peer
-    4) Approve Chaincode as per Lifecycle Endorsment Policy
-    5) Commit Chaincode Defination
-7) Create Connection Profiles
-8) Start API Server
-9) Register User using API
-10) Invoke Chaincode Transaction
-11) Query Chaincode Transaction
-
-
-
-
-
-
-
-
-
-
-
-Back to postman, add car, keep same car_id, modify others
-Go to couchDB, find that record. rev, which represents version change to 2.
-
-Back to postman, find getCarByID. Paste user token. Then call it.
-
-Deploy new Chaincode:
-Back to server, open new terminal in FabricNetwork-2.x
-./deployDocumentCC.sh
-
-After deploy, show 3 more containers about documentCC
-docker ps
-
-Deploy explorer:
-First, copy crypto-config folder to Explorer:
-cp -r artifacts/channel/crypto-config Explorer/
-
-/home/tingyu/myFabric/FabricNetwork-2.x/Explorer/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore
-Rename it to 'priv_sk'
-
-cd Explorer/
-docker-compose up -d
  
